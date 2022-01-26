@@ -1,0 +1,19 @@
+apiVersion: v1
+data:
+  Dockerfile: |-
+    FROM node:14-alpine
+
+    WORKDIR /app
+
+    COPY package*.json ./
+
+    RUN npm install
+
+    COPY . .
+
+    CMD [ "npm", "start"]
+  port: "3000"
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: default
